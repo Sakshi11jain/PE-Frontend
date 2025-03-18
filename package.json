@@ -20,6 +20,7 @@
     "@uiw/codemirror-theme-dracula": "^4.23.8",
     "@uiw/react-codemirror": "^4.23.8",
     "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
     "framer-motion": "^12.4.7",
     "lucide-react": "^0.476.0",
     "react": "^18.3.1",
