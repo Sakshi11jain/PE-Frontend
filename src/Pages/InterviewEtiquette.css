@@ -1,0 +1,32 @@
+.etiquette-container {
+    background-color: #1e293b;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.etiquette-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+
+.etiquette-section {
+    width: 75%;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #e2e8f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.etiquette-section:hover {
+    transform: scale(1.05);
+}
+
+.etiquette-item {
+    font-size: 18px;
+    color: #334155;
+}
