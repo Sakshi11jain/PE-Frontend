@@ -14,6 +14,7 @@ const MCQTest = () => {
   const [timeLeft, setTimeLeft] = useState(60);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     if (isTestCompleted) {
@@ -36,7 +37,7 @@ const MCQTest = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/mcq');
+        const response = await fetch(`${API_URL}/api/mcq`);
         const data = await response.json();
         let categoryQuestions = category === 'aptitude' ? data.aptitude_questions : data.technical_questions;
         if (categoryQuestions?.length) {

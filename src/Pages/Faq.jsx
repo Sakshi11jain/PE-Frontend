@@ -5,9 +5,10 @@ export default function FaqPage() {
   const [selectedCategory, setSelectedCategory] = useState("frontend");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const scrollRef = useRef(null);
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/faqs")
+    fetch(`${API_URL}/api/faqs`)
       .then((response) => response.json())
       .then((data) => setFaqData(data));
   }, []);

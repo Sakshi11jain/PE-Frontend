@@ -10,15 +10,14 @@ const ChatInterface = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef(null);
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
 
-  const englishOnlyRegex = /^[a-zA-Z0-9\s.,!?'"-]*$/;
+  // const englishOnlyRegex = /^[a-zA-Z0-9\s.,!?'"-]*$/;
 
   const fetchQuestions = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(
-        `http://localhost:3000/api/questions/${category}`
-      );
+      const response = await axios.get(`${API_URL}/api/questions/${category}`);
       setQuestions(response.data);
       setCurrentQuestionIndex(0);
       setUserAnswer("");
@@ -41,7 +40,7 @@ const ChatInterface = () => {
     try {
       const currentQuestion = questions[currentQuestionIndex];
       const response = await axios.post(
-        "http://localhost:3000/api/questions/evaluate",
+        `${API_URL}/api/questions/evaluate`,
         {
           category,
           questionId: currentQuestion._id,

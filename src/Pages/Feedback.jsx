@@ -5,10 +5,11 @@ const FeedbackForm = () => {
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/api/feedback", {
+    const response = await fetch(`${API_URL}/api/feedback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

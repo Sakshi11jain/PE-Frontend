@@ -16,6 +16,7 @@ function MainPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
 
   const handleGetStartedClick = () => {
     setIsModalOpen(true);
@@ -39,7 +40,7 @@ function MainPage() {
       return handleError("Email and password are required");
     }
     try {
-      const url = `http://localhost:3000/auth/login`;
+      const url = `${API_URL}/auth/login`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -73,7 +74,7 @@ function MainPage() {
       return handleError("All fields are required!");
     }
     try {
-      const url = `http://localhost:3000/auth/signup`;
+      const url = `${API_URL}/auth/signup`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
