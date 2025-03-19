@@ -9,11 +9,11 @@ const Footer = () => {
         <img
           src="./images/footer_logo.jpg"
           alt="Footer Logo"
-          className="w-24 h-16 md:w-36 md:h-36 rounded-full border-2 border-gray-700"
+          className="w-24 h-[3.7 rem] md:w-36 md:h-36 rounded-full border-2 border-gray-700"
         />
       </div>
 
-      <div className="text-center space-y-3">
+      <div className="text-center space-y-3 px-2">
         <h2 className="text-lg md:text-2xl font-semibold text-gray-200">
           Sakshi Jain & Ayushi Pawar
         </h2>
@@ -73,7 +73,7 @@ const Footer = () => {
           <img
             src="./images/SCSIT logo.png"
             alt="SCSIT Logo"
-            className="w-24 h-16 md:w-36 md:h-36 rounded-full border-2 border-gray-700"
+            className="w-24 h-[3.6 rem] md:w-36 md:h-36 rounded-full border-2 border-gray-700"
           />
         </div>
 
