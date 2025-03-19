@@ -32,7 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
-        <Route path="/chat-interface" element={<PrivateRoute><ChatInterface /></PrivateRoute>} />
+        <Route path="/chat-interface" element={<ChatInterface />} />
         <Route path="/resume" element={<ResumeBuilder />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/etiquettes" element={<EtiquetteSection />} />
