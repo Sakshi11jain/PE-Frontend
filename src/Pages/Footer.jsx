@@ -3,22 +3,24 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-400 p-6 md:p-8">
-      <div className="container mx-auto flex flex-wrap items-center justify-between text-center space-y-8 md:space-y-0">
-        <div className="w-full md:w-1/3 flex justify-center">
-          <img
-            src="./images/footer_logo.jpg"
-            alt="SCSIT logo"
-            className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-gray-700"
-          />
-        </div>
-        <div className="w-full md:w-1/3 space-y-4">
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-200 pt-4 pb-2">
-            Sakshi Jain & Ayushi Pawar
-          </h2>
-          <p className="text-sm md:text-base text-gray-400">
-            Built with ❤️ using MongoDB, Express, Reactjs, and Nodejs
-          </p>
-          <div className="flex justify-center space-x-8 pt-4">
+    <div className="container mx-auto flex flex-row md:flex-row items-center justify-center text-center space-y-6 pb-6 md:space-y-0 md:space-x-12">
+      
+      <div className="flex justify-center">
+        <img
+          src="./images/footer_logo.jpg"
+          alt="Footer Logo"
+          className="w-24 h-16 md:w-36 md:h-36 rounded-full border-2 border-gray-700"
+        />
+      </div>
+
+      <div className="text-center space-y-3">
+        <h2 className="text-lg md:text-2xl font-semibold text-gray-200">
+          Sakshi Jain & Ayushi Pawar
+        </h2>
+        <p className="text-sm md:text-base">
+          Built with ❤️ using MongoDB, Express, React, and Node.js
+        </p>
+        <div className="flex justify-center space-x-5">
             <a
               href="https://www.linkedin.com/in/prepedge/"
               target="_blank"
@@ -67,13 +69,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/3 flex justify-center">
+        <div className="flex justify-center">
           <img
             src="./images/SCSIT logo.png"
-            alt="SCSIT logo"
-            className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-gray-700"
+            alt="SCSIT Logo"
+            className="w-24 h-16 md:w-36 md:h-36 rounded-full border-2 border-gray-700"
           />
         </div>
+
       </div>
     </footer>
   );
