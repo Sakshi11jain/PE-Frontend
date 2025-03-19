@@ -12,8 +12,6 @@ const ChatInterface = () => {
   const chatEndRef = useRef(null);
   const API_URL = import.meta.env.VITE_BACKEND_URL;
 
-  // const englishOnlyRegex = /^[a-zA-Z0-9\s.,!?'"-]*$/;
-
   const fetchQuestions = async () => {
     try {
       setIsLoading(true);
@@ -90,7 +88,7 @@ const ChatInterface = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-200 to-blue-500">
-    <div className="w-full max-w-2xl bg-white shadow-xl rounded-lg flex flex-col h-screen md:h-[85vh] overflow-hidden">
+    <div className="w-full max-w-2xl bg-white shadow-xl rounded-lg flex flex-col h-[90vh] md:h-[85vh] max-h-[600px] overflow-hidden">
       {/* Header */}
       <div className="p-4 md:p-6 border-b bg-gradient-to-r from-blue-600 to-purple-600 flex justify-between items-center">
         <h1 className="text-lg md:text-2xl font-bold text-white">Mock Interview Chatbot</h1>
@@ -152,7 +150,7 @@ const ChatInterface = () => {
       </div>
   
       {/* Input Area */}
-      <div className="border-t p-4 bg-white fixed bottom-0 w-full md:relative md:w-auto">
+      <div className="border-t p-4 bg-white w-full md:relative md:w-auto">
         <div className="flex items-center w-full">
           <textarea
             value={userAnswer}
