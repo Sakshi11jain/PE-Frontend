@@ -14,13 +14,24 @@ const MCQTest = () => {
   const [timeLeft, setTimeLeft] = useState(60);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_BACKEND_URL;
+  const [previousScore, setPreviousScore] = useState(null);
+
+  useEffect(() => {
+    const savedScore = sessionStorage.getItem(`mcqScore_${category}`);
+    if (savedScore) setPreviousScore(parseInt(savedScore, 10)); 
+  }, [category]);
+  
+  useEffect(() => {
+    if (isTestCompleted) {
+      sessionStorage.setItem(`mcqScore_${category}`, score);
+    }
+  }, [isTestCompleted, score, category]);  
 
   useEffect(() => {
     if (isTestCompleted) {
       setTimeout(() => {
         navigate("/mcq", { replace: true });
-      }, 3000);
+      }, 5000);
     }
   }, [isTestCompleted, navigate]);
 
@@ -33,11 +44,15 @@ const MCQTest = () => {
     };
   }, [navigate]);
 
+  useEffect(() => {
+    const savedScore = sessionStorage.getItem('mcqScore');
+    if (savedScore) setScore(parseInt(savedScore, 10));
+  }, []);
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/mcq`);
+        const response = await fetch('http://localhost:3000/api/mcq');
         const data = await response.json();
         let categoryQuestions = category === 'aptitude' ? data.aptitude_questions : data.technical_questions;
         if (categoryQuestions?.length) {
@@ -81,18 +96,20 @@ const MCQTest = () => {
       });
   
       setScore(newScore);
+      sessionStorage.setItem('mcqScore', newScore);
       return updatedAnswers;
     });
   };
-  
+    
   const handleNext = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
+      sessionStorage.setItem('mcqScore', score);
       setIsTestCompleted(true);
     }
   };
-
+  
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
@@ -183,10 +200,11 @@ const MCQTest = () => {
         <div className="text-center p-6 rounded-3xl mt-12 shadow-lg w-[400px] h-[300px]">
           <h2 className="text-4xl mt-12 font-bold text-green-900">🎉 Test Completed!</h2>
           <br></br>
-          <p className="text-lg">Total Questions: {questions.length}</p>
-          <p className="text-lg">Attempted: {attemptedCount}</p>
-          <p className="text-lg">Correct Answers: {correctAnswers}</p>
-          <p className="text-lg">Incorrect Answers: {incorrectAnswers}</p>
+          <p className="text-lg font-semibold">Total Questions: {questions.length}</p>
+          <p className="text-lg font-semibold">Attempted: {attemptedCount}</p>
+          <p className="text-lg font-semibold text-green-800">Correct Answers: {correctAnswers}</p>
+          <p className="text-lg font-semibold text-red-800">Incorrect Answers: {incorrectAnswers}</p>
+          <p className="text-lg font-semibold text-blue-800">Previous Score: {previousScore !== null ? previousScore : "N/A"}</p>
         </div>
       )}
     </div>
