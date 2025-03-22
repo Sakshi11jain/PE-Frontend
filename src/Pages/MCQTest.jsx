@@ -15,6 +15,7 @@ const MCQTest = () => {
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const navigate = useNavigate();
   const [previousScore, setPreviousScore] = useState(null);
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const savedScore = sessionStorage.getItem(`mcqScore_${category}`);
@@ -52,7 +53,7 @@ const MCQTest = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/mcq');
+        const response = await fetch(`${API_URL}/api/mcq`);
         const data = await response.json();
         let categoryQuestions = category === 'aptitude' ? data.aptitude_questions : data.technical_questions;
         if (categoryQuestions?.length) {
